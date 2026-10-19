@@ -1,6 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
 from .forms import CadastroForm
+
+
+def acesso_view(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    return render(request, 'accounts/acesso.html')
 
 
 def cadastro_view(request):
@@ -8,9 +14,8 @@ def cadastro_view(request):
         form = CadastroForm(request.POST)
 
         if form.is_valid():
-            usuario = form.save()
-            login(request, usuario)
-            return redirect('home')
+            form.save()
+            return redirect('login')
     else:
         form = CadastroForm()
 

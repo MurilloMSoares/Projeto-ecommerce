@@ -152,7 +152,7 @@
         .footer-card {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             margin-top: auto;
         }
 
@@ -177,6 +177,15 @@
 
         .btn-comprar:hover {
             background: var(--cor-hover);
+        }
+
+        /* O botão verde destaca a compra direta. */
+        .btn-agora {
+            background: #059669;
+        }
+
+        .btn-agora:hover {
+            background: #047857;
         }
 
         .empty-state {
@@ -234,7 +243,9 @@
                                     loading="lazy"
                                 >
                             {% else %}
-                                <span class="sem-imagem">Sem imagem disponível</span>
+                                <span class="sem-imagem">
+                                    Sem imagem disponível
+                                </span>
                             {% endif %}
                         </div>
 
@@ -254,14 +265,26 @@
                                     R$ {{ produto.preco }}
                                 </span>
 
+                                <!-- Adiciona uma unidade ao carrinho normal. -->
                                 <form
                                     action="{% url 'adicionar_carrinho' produto.id %}"
                                     method="post"
                                 >
                                     {% csrf_token %}
-
                                     <button type="submit" class="btn-comprar">
                                         Adicionar ao carrinho
+                                    </button>
+                                </form>
+
+                                <!-- Inicia o checkout só com este produto. -->
+                                <form
+                                    action="{% url 'comprar_agora' produto.id %}"
+                                    method="post"
+                                >
+                                    {% csrf_token %}
+                                    <button type="submit"
+                                            class="btn-comprar btn-agora">
+                                        Comprar agora
                                     </button>
                                 </form>
                             </div>

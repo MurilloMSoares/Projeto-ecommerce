@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0a">
+    <meta name="description" content="VOAD — estilo, atitude e identidade.">
+
+    <title>VOAD — Vista sua identidade</title>
+
+    <link rel="stylesheet" href="{% static 'accounts/css/acesso.css' %}">
+    <script src="{% static 'accounts/js/acesso.js' %}" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <a href="{% url 'acesso' %}" class="logo" aria-label="VOAD, página inicial">
+            VOAD<span>.</span>
+        </a>
+
+        <!-- O menu compacto aparece apenas em telas pequenas. -->
+        <button class="menu-toggle"
+                type="button"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="navegacao" id="menu-principal">
+            <a href="#inicio" class="link-nav ativo">Início</a>
+            <a href="#conceito" class="link-nav">Sobre</a>
+            <a href="#vantagens" class="link-nav">Diferenciais</a>
+        </nav>
+
+        <div class="acoes-topo">
+            <a href="{% url 'cadastro' %}" class="botao botao-amarelo">
+                Criar conta
+            </a>
+            <a href="{% url 'login' %}" class="botao botao-contorno">
+                Entrar
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <!-- A imagem fica no CSS para permitir ajustar o enquadramento no celular. -->
+            <div class="hero-fundo" aria-hidden="true"></div>
+            <div class="hero-sombra" aria-hidden="true"></div>
+
+            <div class="hero-conteudo" id="conceito">
+                <p class="sobretitulo">
+                    <span>ESTILO</span>
+                    <span class="ponto">•</span>
+                    <span>ATITUDE</span>
+                    <span class="ponto">•</span>
+                    <span>VOAD</span>
+                </p>
+
+                <h1>Vista sua<br><span>identidade.</span></h1>
+
+                <p class="hero-descricao">
+                    Na VOAD, você encontra mais do que roupas.
+                    Você encontra um estilo de vida.
+                </p>
+
+                <div class="hero-acoes">
+                    <a href="{% url 'cadastro' %}" class="botao botao-amarelo botao-destaque">
+                        Criar minha conta <span aria-hidden="true">↗</span>
+                    </a>
+
+                    <a href="{% url 'login' %}" class="botao botao-contorno botao-destaque">
+                        Já tenho uma conta
+                    </a>
+                </div>
+
+                <p class="hero-nota">SEU ESTILO. SUAS REGRAS.</p>
+            </div>
+
+            <div class="hero-numero" aria-hidden="true">01 / VOAD</div>
+        </section>
+
+        <section class="vantagens" id="vantagens">
+            <article class="vantagem">
+                <span class="vantagem-numero">01</span>
+                <div>
+                    <h2>Estilo próprio</h2>
+                    <p>Peças para quem não precisa seguir todo mundo.</p>
+                </div>
+            </article>
+
+            <article class="vantagem">
+                <span class="vantagem-numero">02</span>
+                <div>
+                    <h2>Compra segura</h2>
+                    <p>Uma experiência simples do início ao fim.</p>
+                </div>
+            </article>
+
+            <article class="vantagem">
+                <span class="vantagem-numero">03</span>
+                <div>
+                    <h2>Feita para você</h2>
+                    <p>Encontre peças que combinam com sua identidade.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <a href="{% url 'acesso' %}" class="logo logo-rodape">
+            VOAD<span>.</span>
+        </a>
+
+        <p>SUA IDENTIDADE. SEU ESTILO.</p>
+        <span class="rodape-copy">© {% now "Y" %} VOAD</span>
+    </footer>
+</body>
+</html>

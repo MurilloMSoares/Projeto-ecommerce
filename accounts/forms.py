@@ -29,3 +29,13 @@ class CadastroForm(UserCreationForm):
         labels = {
             'username': 'Nome de usuário',
         }
+
+    def clean_email(self):
+        email = self.cleaned_data['email'].strip()
+
+        if Usuario.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError(
+                'Este e-mail já está cadastrado. Entre na sua conta.'
+            )
+
+        return email
